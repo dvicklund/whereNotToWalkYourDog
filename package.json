@@ -1,0 +1,36 @@
+{
+  "name": "where-not-to-walk-your-dog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp test:all",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvicklund/whereNotToWalkYourDog.git"
+  },
+  "author": "david@vicklund.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dvicklund/whereNotToWalkYourDog/issues"
+  },
+  "homepage": "https://github.com/dvicklund/whereNotToWalkYourDog#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "webpack-stream": "^3.1.0"
+  }
+}
