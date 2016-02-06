@@ -1,7 +1,7 @@
 var map = L.map('map').setView([39.8282, -98.5795], 4);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>, Website by <a href="http://twitter.com/dvicklund">David Vicklund</a>',
     maxZoom: 18,
     id: 'dvicklund.p2no7d88',
     accessToken: 'pk.eyJ1IjoiZHZpY2tsdW5kIiwiYSI6ImNpazllZzk3bTA3enF2OWt1cXRvbjVvdzEifQ.xZoxddPrFFB8m8za__Xa4A'
@@ -28,11 +28,14 @@ $.ajax({
       ], {
         icon: nuclearIcon
       }).bindPopup(
-        '<div>Transfer Year: ' + curr.attributes.TransferYear + '<br>' +
+        '<div><a target="_blank" href="' + curr.attributes.PublicWebpageUrl + '">' +
+        curr.attributes.Name + '</a><br>' +
+        'Transfer Year: ' + curr.attributes.TransferYear + '<br>' +
         'Lat: ' + curr.attributes.Latitude +
         ', Lng: ' + curr.attributes.Longitude + '<br>' +
-        '<a target="_blank" href="' + curr.attributes.PublicWebpageUrl + '">' +
-        curr.attributes.Name + '</a></div>'
+        'Maintenance Category: ' + curr.attributes.MaintenanceCategory + '<br>' +
+        'Regulatory Driver: ' + curr.attributes.RegulatoryDriver + '<br>' +  
+        '<a target="_blank" href="' + curr.attributes.FactSheetUrl + '">Fact Sheet (PDF)</a></div>'
       ).on('mouseover', function(e) {
         this.openPopup();
       }).addTo(map);
