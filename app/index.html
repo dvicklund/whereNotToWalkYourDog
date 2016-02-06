@@ -2,15 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
     <link rel="stylesheet" href="app.css">
     <title>Where Not To Walk Your Dog</title>
   </head>
   <body>
+    <header>
+      <h1>Where Not To Walk Your Dog</h1>
+      <p id="desc">
+        An interactive map of formerly utilized sites currently managed by the U.S. Department of Energy Office of Legacy Management for the purpose of evaluation and remediation of radioactive contamination.  These are sites where work was performed to develop the nation's nuclear weapons and early atomic energy program.
+      </p>
+      <button id="hide" type="button" name="hide">&#x21EB;</button>
+      <button id="show" type="button" name="show">&#x21E9;</button>
+    </header>
     <main>
-      <div id="map">
-
-      </div>
+      <div id="map">Nuclear Map</div>
     </main>
     <script src="vendor/jquery-2.2.0.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>

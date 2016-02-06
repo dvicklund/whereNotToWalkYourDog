@@ -91,6 +91,26 @@
 	  }
 	});
 
+	$(function() {
+
+	  var hideButton = $('#hide');
+	  var showButton = $('#show');
+	  var header = $('#desc');
+	  showButton.hide();
+
+	  hideButton.on('click', function(e) {
+	    header.hide();
+	    hideButton.hide();
+	    showButton.show();
+	  });
+
+	  showButton.on('click', function(e) {
+	    header.show();
+	    showButton.hide();
+	    hideButton.show();
+	  })
+	});
+
 
 /***/ }
 /******/ ]);
