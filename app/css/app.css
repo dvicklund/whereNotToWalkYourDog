@@ -61,6 +61,7 @@ header {
   padding: 0 2vw 0 2vw; }
 
 button {
-  font-size: 15pt;
+  font-size: 20pt;
   background: none;
-  border: none; }
+  border: none;
+  margin-bottom: -10pt; }
