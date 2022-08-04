@@ -1,10 +1,12 @@
 var map = L.map('map').setView([39.8282, -98.5795], 4);
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>, Website by <a href="http://twitter.com/dvicklund">David Vicklund</a>',
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>, Website by <a href="http://twitter.com/dvicklund">David Vicklund</a>',
+    tileSize: 512,
     maxZoom: 18,
-    id: 'dvicklund.p2no7d88',
-    accessToken: 'pk.eyJ1IjoiZHZpY2tsdW5kIiwiYSI6ImNpazllZzk3bTA3enF2OWt1cXRvbjVvdzEifQ.xZoxddPrFFB8m8za__Xa4A'
+    zoomOffset: -1,
+    id: 'mapbox/streets-v11',
+    accessToken: 'pk.eyJ1IjoiZHZpY2tsdW5kIiwiYSI6ImNsNmZuaWlxazJlZnEzZHFzdzd5dXl3cGsifQ.Nu9cHI5bJltt_rCzDhC5Lg'
 }).addTo(map);
 
 var nuclearData;
