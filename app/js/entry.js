@@ -18,37 +18,47 @@ var nuclearIcon = L.icon({
   popupAnchor: [0, -20]
 });
 
+// Make ajax request to the official public api, then if it fails, fall back to stored snapshot data.
 $.ajax({
-  url: 'data/nuclearData.json',
+  url: 'https://gems.lm.doe.gov/arcgis/rest/services/GEMS_EXT/LMSites_GWh/MapServer/0/query?where=1=1&outFields=*&returnGeometry=true&f=pjson',
   dataType: 'json',
-  success: function(data) {
-    nuclearData = data;
-    nuclearData.features.forEach(function(curr, i, arr) {
-      var marker = L.marker([
-        curr.attributes.Latitude,
-        curr.attributes.Longitude
-      ], {
-        icon: nuclearIcon
-      }).bindPopup(
-        '<div><a target="_blank" href="' + curr.attributes.PublicWebpageUrl + '">' +
-        curr.attributes.Name + '</a><br>' +
-        'Transfer Year: ' + curr.attributes.TransferYear + '<br>' +
-        'Lat: ' + curr.attributes.Latitude +
-        ', Lng: ' + curr.attributes.Longitude + '<br>' +
-        'Maintenance Category: ' + curr.attributes.MaintenanceCategory + '<br>' +
-        'Regulatory Driver: ' + curr.attributes.RegulatoryDriver + '<br>' +  
-        '<a target="_blank" href="' + curr.attributes.FactSheetUrl + '">Fact Sheet (PDF)</a></div>'
-      ).on('mouseover', function(e) {
-        this.openPopup();
-      }).addTo(map);
-    });
-  },
+  success: onSuccess,
   error: function(xhr, textStatus, eThrown) {
-    console.log(xhr);
-    console.log(textStatus);
-    console.log(eThrown);
+    $.ajax({
+      url: 'data/nuclearData.json',
+      dataType: 'json',
+      success: onSuccess,
+      error: function(xhr, textStatus, eThrown) {
+        console.log(xhr);
+        console.log(textStatus);
+        console.log(eThrown);
+      }
+    });
   }
-});
+})
+
+function onSuccess(data) {
+  nuclearData = data;
+  nuclearData.features.forEach(function(curr, i, arr) {
+    var marker = L.marker([
+      curr.attributes.Latitude,
+      curr.attributes.Longitude
+    ], {
+      icon: nuclearIcon
+    }).bindPopup(
+      '<div><a target="_blank" href="' + curr.attributes.PublicWebpageUrl + '">' +
+      curr.attributes.Name + '</a><br>' +
+      'Transfer Year: ' + curr.attributes.TransferYear + '<br>' +
+      'Lat: ' + curr.attributes.Latitude +
+      ', Lng: ' + curr.attributes.Longitude + '<br>' +
+      'Maintenance Category: ' + curr.attributes.MaintenanceCategory + '<br>' +
+      'Regulatory Driver: ' + curr.attributes.RegulatoryDriver + '<br>' +  
+      '<a target="_blank" href="' + curr.attributes.FactSheetUrl + '">Fact Sheet (PDF)</a></div>'
+    ).on('mouseover', function(e) {
+      this.openPopup();
+    }).addTo(map);
+  });
+}
 
 $(function() {
 
